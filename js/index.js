@@ -6,6 +6,21 @@ let outputElement;
 let currentTestOutput = [];
 var testeos = NaN;
 
+
+
+const urlParams = new URLSearchParams(window.location.search);
+const ejercicio = urlParams.get('ejercicio');
+
+// Verificar si se obtuvo el parámetro
+if (ejercicio) {
+    console.log(`Ejercicio seleccionado: ${ejercicio}`);
+    // Aquí puedes usar la variable 'ejercicio' como necesites
+} else {
+    console.log('No se especificó ejercicio en la URL');
+}
+
+
+
 // Configuración inicial al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     // Configurar editores de código
@@ -23,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // });
 
     for (var test of tests) {
-        if (test["id"] == "E2") {
+        if (test["id"] == ejercicio) {
             testeos = test["testing"];
             testeos = JSON.stringify(testeos, null, 2);
             let consigna = document.getElementById('consigna');
