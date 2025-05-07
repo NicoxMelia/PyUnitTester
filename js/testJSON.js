@@ -122,3 +122,5 @@ var tests = [
         }
     }
 ];
+
+export {tests};
