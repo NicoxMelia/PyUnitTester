@@ -72,7 +72,7 @@ async function runAllTests(code, testCasesText) {
         for (const [funcName, tests] of Object.entries(testSuites)) {
             const suiteDiv = document.createElement('div');
             suiteDiv.className = 'test-suite';
-            suiteDiv.innerHTML = `<h4 class="suite-title">Función: ${funcName}()</h4>`;
+            suiteDiv.innerHTML = `<h4 class="suite-title">${formatFunctionName(funcName)}</h4>`;
             outputElement.appendChild(suiteDiv);
             
             // Ejecutar cada test en la suite
@@ -100,6 +100,15 @@ async function runAllTests(code, testCasesText) {
     }
 }
 
+// Formatear nombre de función para mostrar
+function formatFunctionName(funcName) {
+    if (funcName.includes('.')) {
+        const [className, methodName] = funcName.split('.');
+        return `${className}.${methodName}()`;
+    }
+    return `${funcName}()`;
+}
+
 // Ejecutar un test individual
 async function runSingleTest(code, funcName, testCase, testNumber) {
     const testDiv = document.createElement('div');
@@ -110,20 +119,32 @@ async function runSingleTest(code, funcName, testCase, testNumber) {
     testHeader.className = 'test-header';
     testHeader.innerHTML = `
         <strong>Test ${testNumber}:</strong>
-        ${testCase.description || funcName}()
+        ${testCase.description || formatFunctionName(funcName)}
     `;
     testDiv.appendChild(testHeader);
     
     // Cuerpo del test
     const testBody = document.createElement('div');
     testBody.className = 'test-body';
-    testBody.innerHTML = `
+    
+    // Mostrar argumentos de instancia si existen
+    if (testCase.instanceArgs) {
+        testBody.innerHTML += `
+            <div class="test-instance-args">
+                <strong>Constructor args:</strong>
+                <pre>${JSON.stringify(testCase.instanceArgs, null, 2)}</pre>
+            </div>
+        `;
+    }
+    
+    // Mostrar argumentos del método/función
+    testBody.innerHTML += `
         <div class="test-args">
-            <strong>Argumentos:</strong>
+            <strong>${funcName.includes('.') ? 'Method args:' : 'Function args:'}</strong>
             <pre>${JSON.stringify(testCase.args, null, 2)}</pre>
         </div>
         <div class="test-expected">
-            <strong>Esperado:</strong>
+            <strong>Expected:</strong>
             <pre>${JSON.stringify(testCase.expected, null, 2)}</pre>
         </div>
     `;
@@ -137,16 +158,56 @@ async function runSingleTest(code, funcName, testCase, testNumber) {
         // Cargar el código Python
         await pyodide.runPythonAsync(code);
         
-        // Construir llamada a la función
-        const argsStr = Object.entries(testCase.args)
-            .map(([key, val]) => `${key}=${JSON.stringify(val)}`)
-            .join(', ');
+        let result;
+        let resultValue;
         
-        const callStr = `${funcName}(${argsStr})`;
+        // Determinar el tipo de test
+        const isMethod = funcName.includes('.');
         
-        // Ejecutar la función
-        const result = await pyodide.runPythonAsync(callStr);
-        const resultValue = result?.toString() ?? JSON.stringify(result?.toJs?.() ?? result);
+        if (isMethod) {
+            const [className, methodName] = funcName.split('.');
+            
+            // Crear instancia si es método de instancia
+            if (testCase.instanceArgs || !testCase.isStatic) {
+                const instanceArgs = testCase.instanceArgs || {};
+                const instanceArgsStr = Object.entries(instanceArgs)
+                    .map(([key, val]) => `${key}=${JSON.stringify(val)}`)
+                    .join(', ');
+                
+                const instanceCode = `${className}(${instanceArgsStr})`;
+                const instance = await pyodide.runPythonAsync(instanceCode);
+                
+                // Llamar al método con los argumentos
+                const methodArgsStr = Object.entries(testCase.args)
+                    .map(([key, val]) => `${key}=${JSON.stringify(val)}`)
+                    .join(', ');
+                
+                const methodCall = `_instance.${methodName}(${methodArgsStr})`;
+                
+                // Asignar la instancia a una variable global temporal
+                pyodide.globals.set('_instance', instance);
+                result = await pyodide.runPythonAsync(methodCall);
+                pyodide.globals.delete('_instance');
+            } else {
+                // Método estático
+                const argsStr = Object.entries(testCase.args)
+                    .map(([key, val]) => `${key}=${JSON.stringify(val)}`)
+                    .join(', ');
+                
+                const staticCall = `${className}.${methodName}(${argsStr})`;
+                result = await pyodide.runPythonAsync(staticCall);
+            }
+        } else {
+            // Función normal
+            const argsStr = Object.entries(testCase.args)
+                .map(([key, val]) => `${key}=${JSON.stringify(val)}`)
+                .join(', ');
+            
+            const callStr = `${funcName}(${argsStr})`;
+            result = await pyodide.runPythonAsync(callStr);
+        }
+        
+        resultValue = result?.toString() ?? JSON.stringify(result?.toJs?.() ?? result);
         
         // Comparar resultados
         const expectedValue = JSON.stringify(testCase.expected);
@@ -157,7 +218,7 @@ async function runSingleTest(code, funcName, testCase, testNumber) {
         const resultDiv = document.createElement('div');
         resultDiv.className = `test-result ${passed ? 'passed' : 'failed'}`;
         resultDiv.innerHTML = `
-            <strong>Resultado:</strong>
+            <strong>Result:</strong>
             <pre>${resultValue}</pre>
             <div class="test-status">
                 ${passed ? '✅ PASSED' : '❌ FAILED'}

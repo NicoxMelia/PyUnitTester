@@ -21,15 +21,36 @@
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="code" class="form-label">Código Python</label>
-                    <textarea id="code" class="form-control" rows="15">def suma(a, b):
-    print(f"Sumando {a} + {b}")
-    return a + b
+                    <textarea id="code" class="form-control" rows="15">class Persona:
+    def __init__(self, nombre="Anónimo"):
+        self.nombre = nombre
+        print(f"Persona {self.nombre} creada")
+    
+    def saludar(self):
+        print(f"{self.nombre} está saludando")
+        return f"Hola, soy {self.nombre}"
+    
+    def caminar(self, pasos):
+        print(f"{self.nombre} caminó {pasos} pasos")
+        return f"Caminé {pasos} pasos"
+    
+    @staticmethod
+    def metodo_estatico():
+        print("Método estático llamado")
+        return "Soy estático"
 
-def factorial(n):
-    print(f"Calculando factorial de {n}")
-    if n == 0:
-        return 1
-    return n * factorial(n-1)</textarea>
+class Calculadora:
+    def __init__(self, marca):
+        self.marca = marca
+        print(f"Calculadora {marca} creada")
+    
+    def sumar(self, a, b):
+        print(f"Sumando {a} + {b} con {self.marca}")
+        return a + b
+
+def funcion_simple(x):
+    print(f"Función simple con {x}")
+    return x * 2</textarea>
                 </div>
             </div>
             
@@ -37,28 +58,48 @@ def factorial(n):
                 <div class="mb-3">
                     <label for="test-cases" class="form-label">Casos de Prueba (JSON)</label>
                     <textarea id="test-cases" class="form-control" rows="15">{
-    "suma": [
+    "funcion_simple": [
         {
-            "args": {"a": 2, "b": 3},
-            "expected": 5,
-            "description": "Suma básica"
-        },
-        {
-            "args": {"a": -1, "b": 1},
-            "expected": 0,
-            "description": "Suma con negativos"
+            "args": {"x": 5},
+            "expected": 10,
+            "description": "Función simple básica"
         }
     ],
-    "factorial": [
+    "Persona.saludar": [
         {
-            "args": {"n": 5},
-            "expected": 120,
-            "description": "Factorial de 5"
+            "instanceArgs": {"nombre": "Juan"},
+            "args": {},
+            "expected": "Hola, soy Juan",
+            "description": "Saludo con nombre"
         },
         {
-            "args": {"n": 0},
-            "expected": 1,
-            "description": "Factorial de 0 (caso base)"
+            "instanceArgs": {},
+            "args": {},
+            "expected": "Hola, soy Anónimo",
+            "description": "Saludo anónimo"
+        }
+    ],
+    "Persona.caminar": [
+        {
+            "instanceArgs": {"nombre": "Ana"},
+            "args": {"pasos": 10},
+            "expected": "Caminé 10 pasos",
+            "description": "Caminar 10 pasos"
+        }
+    ],
+    "Persona.metodo_estatico": [
+        {
+            "args": {},
+            "expected": "Soy estático",
+            "description": "Método estático"
+        }
+    ],
+    "Calculadora.sumar": [
+        {
+            "instanceArgs": {"marca": "SuperCalc"},
+            "args": {"a": 3, "b": 4},
+            "expected": 7,
+            "description": "Suma básica con calculadora"
         }
     ]
 }</textarea>
