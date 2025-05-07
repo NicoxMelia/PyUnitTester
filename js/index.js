@@ -1,7 +1,10 @@
+import {tests} from "./testJSON.js";
+
 // Variables globales
 let pyodide;
 let outputElement;
 let currentTestOutput = [];
+var testeos = NaN;
 
 // Configuración inicial al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,11 +16,21 @@ document.addEventListener('DOMContentLoaded', () => {
         theme: 'default'
     });
 
-    const testEditor = CodeMirror.fromTextArea(document.getElementById('test-cases'), {
-        mode: 'javascript',
-        lineNumbers: true,
-        theme: 'default'
-    });
+    // const testEditor = CodeMirror.fromTextArea(document.getElementById('test-cases'), {
+    //     mode: 'javascript',
+    //     lineNumbers: true,
+    //     theme: 'default'
+    // });
+
+    for (var test of tests) {
+        if (test["id"] == "E2") {
+            testeos = test["testing"];
+            testeos = JSON.stringify(testeos, null, 2);
+            let consigna = document.getElementById('consigna');
+            consigna.innerHTML = test["ejercicio"];
+        }
+    }
+
 
     outputElement = document.getElementById('output');
     
@@ -26,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Configurar botón de ejecución
     document.getElementById('run-btn').addEventListener('click', async () => {
-        await runAllTests(codeEditor.getValue(), testEditor.getValue());
+        await runAllTests(codeEditor.getValue(), testeos);
     });
 });
 

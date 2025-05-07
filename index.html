@@ -11,50 +11,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
-    <script src="./js/index.js" defer></script>
+    <script type="module" src="./js/index.js" defer></script>
 </head>
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">Python Tester Avanzado</h1>
+
+        <h3 id="consigna"></h3>
         
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="code" class="form-label">Código Python</label>
-                    <textarea id="code" class="form-control" rows="15">class Persona:
-    def __init__(self, nombre="Anónimo"):
-        self.nombre = nombre
-        print(f"Persona {self.nombre} creada")
-    
-    def saludar(self):
-        print(f"{self.nombre} está saludando")
-        return f"Hola, soy {self.nombre}"
-    
-    def caminar(self, pasos):
-        print(f"{self.nombre} caminó {pasos} pasos")
-        return f"Caminé {pasos} pasos"
-    
-    @staticmethod
-    def metodo_estatico():
-        print("Método estático llamado")
-        return "Soy estático"
-
-class Calculadora:
-    def __init__(self, marca):
-        self.marca = marca
-        print(f"Calculadora {marca} creada")
-    
-    def sumar(self, a, b):
-        print(f"Sumando {a} + {b} con {self.marca}")
-        return a + b
-
-def funcion_simple(x):
-    print(f"Función simple con {x}")
-    return x * 2</textarea>
+                    <textarea id="code" class="form-control" rows="15"></textarea>
                 </div>
             </div>
             
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
                 <div class="mb-3">
                     <label for="test-cases" class="form-label">Casos de Prueba (JSON)</label>
                     <textarea id="test-cases" class="form-control" rows="15">{
@@ -104,7 +77,7 @@ def funcion_simple(x):
     ]
 }</textarea>
                 </div>
-            </div>
+            </div> -->
         </div>
         
         <button id="run-btn" class="btn btn-primary">Ejecutar Tests</button>
