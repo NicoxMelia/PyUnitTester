@@ -1,0 +1,19 @@
+[
+  {
+    "titulo": "🧩 Ejercicio 1: Hola Mundo",
+    "enunciado": "Escribe un programa que imprima \"¡Hola, mundo!\" en la consola.",
+    "ejemplos": [
+      { "llamada": "print(\"¡Hola, mundo!\")", "salida": "¡Hola, mundo!" }
+    ],
+    "id":"E1"
+  },
+  {
+    "titulo": "🔢 Ejercicio 2: Suma de Dos Números",
+    "enunciado": "Escribe una función que tome dos números y devuelva su suma.",
+    "ejemplos": [
+      { "llamada": "suma(3, 5)", "salida": "8" },
+      { "llamada": "suma(-1, 1)", "salida": "0" }
+    ],
+    "id":"E2"
+  }
+]
