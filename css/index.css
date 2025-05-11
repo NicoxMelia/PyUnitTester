@@ -37,13 +37,13 @@ h1 {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-pre {
+/* pre {
   background: #2b2d31;
   padding: 12px;
   border-radius: 4px;
   overflow-x: auto;
   display: none;
-}
+} */
 
 .solution {
   margin-top: 10px;

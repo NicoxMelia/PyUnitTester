@@ -1,7 +1,6 @@
-var tests = [
+const tests = [
     {
         "id": "E1",
-        "ejercicio": "Crear una clase Persona que: 1) Tenga un constructor que acepte nombre (por defecto 'Anónimo'), 2) Un método saludar() que retorne 'Hola, soy [nombre]', 3) Un método caminar(pasos) que retorne '[nombre] caminó [pasos] pasos'",
         "testing": {
             "Persona.saludar": [
                 {
@@ -29,7 +28,6 @@ var tests = [
     },
     {
         "id": "E2",
-        "ejercicio": "Crear una clase Rectángulo que: 1) Tenga un constructor que acepte ancho y alto, 2) Un método area() que calcule el área (ancho*alto), 3) Un método perimetro() que calcule el perímetro (2*(ancho+alto))",
         "testing": {
             "Rectangulo.area": [
                 {
@@ -51,7 +49,6 @@ var tests = [
     },
     {
         "id": "E3",
-        "ejercicio": "Crear una clase Libro que: 1) Tenga un constructor con título, autor y páginas, 2) Un método descripcion() que retorne '[titulo] por [autor], [páginas] páginas', 3) Un método leer(paginas_leidas) que retorne 'Has leído [paginas_leidas] páginas de [titulo]'",
         "testing": {
             "Libro.descripcion": [
                 {
@@ -73,7 +70,6 @@ var tests = [
     },
     {
         "id": "E4",
-        "ejercicio": "Crear una clase CuentaBancaria que: 1) Tenga un constructor con titular y saldo (por defecto 0), 2) Un método depositar(monto) que sume al saldo, 3) Un método retirar(monto) que reste del saldo si hay fondos, o retorne 'Fondos insuficientes'",
         "testing": {
             "CuentaBancaria.depositar": [
                 {
@@ -101,7 +97,6 @@ var tests = [
     },
     {
         "id": "E5",
-        "ejercicio": "Crear una clase Coche que: 1) Tenga un constructor con marca, modelo y kilometraje (por defecto 0), 2) Un método avanzar(kms) que sume kilómetros al kilometraje, 3) Un método obtener_kilometraje() que retorne el kilometraje actual",
         "testing": {
             "Coche.avanzar": [
                 {
@@ -123,4 +118,4 @@ var tests = [
     }
 ];
 
-export {tests};
+export { tests };

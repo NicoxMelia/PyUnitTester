@@ -1,19 +1,81 @@
 [
   {
-    "titulo": "🧩 Ejercicio 1: Hola Mundo",
-    "enunciado": "Escribe un programa que imprima \"¡Hola, mundo!\" en la consola.",
+    "id": "E1",
+    "titulo": "🧩 Ejercicio 1: Clase Persona",
+    "enunciado": "Crear una clase Persona que: 1) Tenga un constructor que acepte nombre (por defecto 'Anónimo'), 2) Un método saludar() que retorne 'Hola, soy [nombre]', 3) Un método caminar(pasos) que retorne '[nombre] caminó [pasos] pasos'",
     "ejemplos": [
-      { "llamada": "print(\"¡Hola, mundo!\")", "salida": "¡Hola, mundo!" }
-    ],
-    "id":"E1"
+      {
+        "llamada": "persona = Persona('Juan')\npersona.saludar()",
+        "salida": "'Hola, soy Juan'"
+      },
+      {
+        "llamada": "persona = Persona()\npersona.caminar(10)",
+        "salida": "'Anónimo caminó 10 pasos'"
+      }
+    ]
   },
   {
-    "titulo": "🔢 Ejercicio 2: Suma de Dos Números",
-    "enunciado": "Escribe una función que tome dos números y devuelva su suma.",
+    "id": "E2",
+    "titulo": "🔢 Ejercicio 2: Clase Rectangulo",
+    "enunciado": "Crear una clase Rectangulo que: 1) Tenga un constructor que acepte ancho y alto, 2) Un método area() que calcule el área (ancho*alto), 3) Un método perimetro() que calcule el perímetro (2*(ancho+alto))",
     "ejemplos": [
-      { "llamada": "suma(3, 5)", "salida": "8" },
-      { "llamada": "suma(-1, 1)", "salida": "0" }
-    ],
-    "id":"E2"
+      {
+        "llamada": "rect = Rectangulo(5, 3)\nrect.area()",
+        "salida": "15"
+      },
+      {
+        "llamada": "rect = Rectangulo(4, 7)\nrect.perimetro()",
+        "salida": "22"
+      }
+    ]
+  },
+  {
+    "id": "E3",
+    "titulo": "📚 Ejercicio 3: Clase Libro",
+    "enunciado": "Crear una clase Libro que: 1) Tenga un constructor con título, autor y páginas, 2) Un método descripcion() que retorne '[titulo] por [autor], [páginas] páginas', 3) Un método leer(paginas_leidas) que retorne 'Has leído [paginas_leidas] páginas de [titulo]'",
+    "ejemplos": [
+      {
+        "llamada": "libro = Libro('Cien años de soledad', 'García Márquez', 432)\nlibro.descripcion()",
+        "salida": "'Cien años de soledad por García Márquez, 432 páginas'"
+      },
+      {
+        "llamada": "libro = Libro('El Principito', 'Saint-Exupéry', 96)\nlibro.leer(30)",
+        "salida": "'Has leído 30 páginas de El Principito'"
+      }
+    ]
+  },
+  {
+    "id": "E4",
+    "titulo": "💰 Ejercicio 4: Clase CuentaBancaria",
+    "enunciado": "Crear una clase CuentaBancaria que: 1) Tenga un constructor con titular y saldo (por defecto 0), 2) Un método depositar(monto) que sume al saldo, 3) Un método retirar(monto) que reste del saldo si hay fondos, o retorne 'Fondos insuficientes'",
+    "ejemplos": [
+      {
+        "llamada": "cuenta = CuentaBancaria('Ana', 100)\ncuenta.depositar(50)",
+        "salida": "150"
+      },
+      {
+        "llamada": "cuenta = CuentaBancaria('Carlos', 200)\ncuenta.retirar(80)",
+        "salida": "120"
+      },
+      {
+        "llamada": "cuenta = CuentaBancaria('Luisa', 50)\ncuenta.retirar(100)",
+        "salida": "'Fondos insuficientes'"
+      }
+    ]
+  },
+  {
+    "id": "E5",
+    "titulo": "🚗 Ejercicio 5: Clase Coche",
+    "enunciado": "Crear una clase Coche que: 1) Tenga un constructor con marca, modelo y kilometraje (por defecto 0), 2) Un método avanzar(kms) que sume kilómetros al kilometraje, 3) Un método obtener_kilometraje() que retorne el kilometraje actual",
+    "ejemplos": [
+      {
+        "llamada": "coche = Coche('Toyota', 'Corolla')\ncoche.avanzar(150)",
+        "salida": "150"
+      },
+      {
+        "llamada": "coche = Coche('Ford', 'Fiesta', 5000)\ncoche.obtener_kilometraje()",
+        "salida": "5000"
+      }
+    ]
   }
 ]
