@@ -1,7 +1,7 @@
 // Función para cargar ejercicios desde JSON
 async function loadExercises() {
   try {
-    const response = await fetch('js/ejercicios.json');
+    const response = await fetch('js/ejercicios.json'); // ../js/ejercicios.json
     const exercises = await response.json();
     renderExercises(exercises);
   } catch (error) {

@@ -77,5 +77,80 @@
         "salida": "5000"
       }
     ]
+  },
+  {
+    "id": "E6",
+    "titulo": "🏫 Ejercicio 6: Herencia - Estudiante",
+    "enunciado": "Crear una clase Estudiante que herede de Persona (ejercicio 1) y añada: 1) Un constructor que acepte nombre y carrera (por defecto 'No especificada'), 2) Un método estudiar() que retorne '[nombre] está estudiando [carrera]', 3) Un método presentarse() que sobrescriba el de Persona para retornar 'Hola, soy [nombre] y estudio [carrera]'",
+    "ejemplos": [
+      {
+        "llamada": "estudiante = Estudiante('María', 'Medicina')\nestudiante.estudiar()",
+        "salida": "'María está estudiando Medicina'"
+      },
+      {
+        "llamada": "estudiante = Estudiante('Pedro')\nestudiante.presentarse()",
+        "salida": "'Hola, soy Pedro y estudio No especificada'"
+      }
+    ]
+  },
+  {
+    "id": "E7",
+    "titulo": "🏥 Ejercicio 7: Herencia - Medico",
+    "enunciado": "Crear una clase Medico que herede de Persona (ejercicio 1) y añada: 1) Un constructor que acepte nombre y especialidad (requerido), 2) Un método tratar(paciente) que retorne 'Dr. [nombre] está tratando a [paciente]', 3) Sobrescribir saludar() para retornar 'Hola, soy el Dr. [nombre], especialista en [especialidad]'",
+    "ejemplos": [
+      {
+        "llamada": "medico = Medico('López', 'Cardiología')\nmedico.tratar('Juan')",
+        "salida": "'Dr. López está tratando a Juan'"
+      },
+      {
+        "llamada": "medico = Medico('Gómez', 'Pediatría')\nmedico.saludar()",
+        "salida": "'Hola, soy el Dr. Gómez, especialista en Pediatría'"
+      }
+    ]
+  },
+  {
+    "id": "E8",
+    "titulo": "🏦 Ejercicio 8: Herencia - CuentaPremium",
+    "enunciado": "Crear una clase CuentaPremium que herede de CuentaBancaria (ejercicio 4) y añada: 1) Un constructor con titular, saldo (por defecto 1000) y nivel (por defecto 'Oro'), 2) Un método transferir(destino, monto) que reste del saldo y sume al destino, 3) Sobrescribir retirar() para permitir sobregiros hasta -500 si nivel es 'Platino'",
+    "ejemplos": [
+      {
+        "llamada": "premium = CuentaPremium('Ana')\npremium.retirar(1200)",
+        "salida": "200"
+      },
+      {
+        "llamada": "premium = CuentaPremium('Carlos', 2000, 'Platino')\npremium.retirar(2400)",
+        "salida": "-400"
+      }
+    ]
+  },
+  {
+    "id": "E9",
+    "titulo": "📱 Ejercicio 9: Herencia - Smartphone",
+    "enunciado": "Crear una clase Smartphone que herede de Dispositivo (clase base nueva) con: 1) Dispositivo debe tener marca y modelo, 2) Smartphone añade sistema_operativo y almacenamiento, 3) Método instalar_app(nombre) que retorne 'Instalando [nombre] en [marca] [modelo]', 4) Método info() que retorne todos los datos",
+    "ejemplos": [
+      {
+        "llamada": "movil = Smartphone('Samsung', 'Galaxy S22', 'Android', 128)\nmovil.instalar_app('WhatsApp')",
+        "salida": "'Instalando WhatsApp en Samsung Galaxy S22'"
+      },
+      {
+        "llamada": "movil = Smartphone('Apple', 'iPhone 13', 'iOS', 256)\nmovil.info()",
+        "salida": "'Marca: Apple, Modelo: iPhone 13, SO: iOS, Almacenamiento: 256GB'"
+      }
+    ]
+  },
+  {
+    "id": "E10",
+    "titulo": "🐾 Ejercicio 10: Herencia - Zoologico",
+    "enunciado": "Crear un sistema de clases para un zoológico: 1) Clase Animal con nombre y especie, 2) Clase AnimalVolador que herede de Animal y añada altitud_maxima, 3) Clase AnimalAcuatico que herede de Animal y añada profundidad_maxima, 4) Métodos mover() específicos para cada tipo",
+    "ejemplos": [
+      {
+        "llamada": "aguila = AnimalVolador('Águila', 'Real', 3000)\naguila.mover()",
+        "salida": "'Águila Real está volando a 3000 metros'"
+      },
+      {
+        "llamada": "tiburon = AnimalAcuatico('Tiburón', 'Blanco', 1200)\ntiburon.mover()",
+        "salida": "'Tiburón Blanco está nadando a 1200 metros de profundidad'"
+      }
+    ]
   }
 ]
