@@ -68,7 +68,7 @@ function renderSingleExercise(exercise) {
             ${exercise.ejemplos.map(example => `
               <tr>
                 <td>${formatCodeCall(example.llamada)}</td>
-                <td><code>${example.salida}</code></td>
+                <td>${formatCodeCall(example.salida)}</td>
               </tr>
             `).join('')}
           </tbody>

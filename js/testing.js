@@ -14,8 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
         mode: 'python',
         lineNumbers: true,
         indentType: 4,
-        theme: 'default'
+        theme: 'default',
     });
+
+    codeEditor.setValue("#Put here the script");
 
     for (var test of tests) {
         if (test["id"] == ejercicio) {
