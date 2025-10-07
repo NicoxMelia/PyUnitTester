@@ -152,5 +152,151 @@
         "salida": "'Tiburón Blanco está nadando a 1200 metros de profundidad'"
       }
     ]
+  },
+  {
+    "id": "E11",
+    "titulo": "🟩 Ejercicio 1: Calcular área de un cuadrado",
+    "enunciado": "Haga una funcion que pide al usuario el lado de un cuadrado y muestra el área.",
+    "ejemplos": [
+      {
+        "llamada": "lado = 5\narea = area_cuadrado(lado)\nprint(area)",
+        "salida": "25"
+      },
+      {
+        "llamada": "lado = 8\narea = area_cuadrado(lado)\nprint(area)",
+        "salida": "64"
+      }
+    ]
+  },
+  {
+    "id": "E12",
+    "titulo": "💰 Ejercicio 2: Precio final con IVA",
+    "enunciado": "Haga una funcion que solicita un precio sin IVA y calcula el precio final con un IVA del 21%.",
+    "ejemplos": [
+      {
+        "llamada": "precio = 100\nfinal = precio_con_iva(precio)\nprint(final)",
+        "salida": "121.0"
+      },
+      {
+        "llamada": "precio = 250\nfinal = precio_con_iva(precio)\nprint(final)",
+        "salida": "302.5"
+      }
+    ]
+  },
+  {
+    "id": "E13",
+    "titulo": "🔢 Ejercicio 3: Comparar dos números",
+    "enunciado": "Haga una funcion que pide dos números y muestra cuál es mayor o si son iguales.",
+    "ejemplos": [
+      {
+        "llamada": "a, b = 5, 8\ncomparar_numeros(a, b)\n",
+        "salida": "'El mayor es 8'"
+      },
+      {
+        "llamada": "a, b = 7, 7\ncomparar_numeros(a, b)\n",
+        "salida": "'Son iguales'"
+      }
+    ]
+  },
+  {
+    "id": "E14",
+    "titulo": "📏 Ejercicio 4: Área de un triángulo",
+    "enunciado": "Haga una funcion area_triangulo() que pide base y altura de un triángulo y calcula su área.",
+    "ejemplos": [
+      {
+        "llamada": "base, altura = 6, 4\n",
+        "salida": "12.0"
+      },
+      {
+        "llamada": "base, altura = 10, 3\n",
+        "salida": "15.0"
+      }
+    ]
+  },
+  {
+    "id": "E15",
+    "titulo": "📅 Ejercicio 5: Edad y mayoría de edad",
+    "enunciado": "Haga una funcion que pide la edad del usuario e indica si es mayor o menor de edad (18 años).",
+    "ejemplos": [
+      {
+        "llamada": "edad = 20\n",
+        "salida": "'Eres mayor de edad'"
+      },
+      {
+        "llamada": "edad = 16\n",
+        "salida": "'Eres menor de edad'"
+      }
+    ]
+  },
+  {
+    "id": "E16",
+    "titulo": "📊 Ejercicio 6: Promedio de notas",
+    "enunciado": "Haga una funcion que pide tres notas y calcula el promedio, mostrando si aprobó (>=6) o reprobó.",
+    "ejemplos": [
+      {
+        "llamada": "notas = [8, 6, 7]\n",
+        "salida": "'Aprobado con 7.0'"
+      },
+      {
+        "llamada": "notas = [3, 5, 4]\n",
+        "salida": "'Reprobado con 4.0'"
+      }
+    ]
+  },
+  {
+    "id": "E17",
+    "titulo": "🔁 Ejercicio 7: Contar números pares",
+    "enunciado": "Pide una lista de números y cuenta cuántos son pares.",
+    "ejemplos": [
+      {
+        "llamada": "nums = [1, 2, 3, 4, 5, 6]\npares = sum(1 for n in nums if n % 2 == 0)\nprint(pares)",
+        "salida": "3"
+      },
+      {
+        "llamada": "nums = [7, 9, 11]\n# salida esperada\n'0'"
+      }
+    ]
+  },
+  {
+    "id": "E18",
+    "titulo": "🧮 Ejercicio 8: Suma de los primeros N números",
+    "enunciado": "Pide un número N y calcula la suma de los números del 1 al N.",
+    "ejemplos": [
+      {
+        "llamada": "n = 5\nsuma = sum(range(1, n+1))\nprint(suma)",
+        "salida": "15"
+      },
+      {
+        "llamada": "n = 10\n# salida esperada\n'55'"
+      }
+    ]
+  },
+  {
+    "id": "E19",
+    "titulo": "🔠 Ejercicio 9: Contar vocales en una palabra",
+    "enunciado": "Pide una palabra y cuenta cuántas vocales contiene.",
+    "ejemplos": [
+      {
+        "llamada": "palabra = 'murciélago'\ncontador = sum(1 for c in palabra.lower() if c in 'aeiou')\nprint(contador)",
+        "salida": "5"
+      },
+      {
+        "llamada": "palabra = 'python'\n# salida esperada\n'1'"
+      }
+    ]
+  },
+  {
+    "id": "E20",
+    "titulo": "⏱️ Ejercicio 10: Tabla de multiplicar",
+    "enunciado": "Pide un número y muestra su tabla de multiplicar del 1 al 10.",
+    "ejemplos": [
+      {
+        "llamada": "n = 3\nfor i in range(1, 11):\n    print(f'{n} x {i} = {n*i}')",
+        "salida": "'3 x 1 = 3 ... 3 x 10 = 30'"
+      },
+      {
+        "llamada": "n = 5\n# salida esperada (resumen)\n'5 x 1 = 5 ... 5 x 10 = 50'"
+      }
+    ]
   }
 ]
